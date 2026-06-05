@@ -26,7 +26,7 @@
                                 <div class="col-md-8">
                                     <div class="form-group">
                                         <label>Kategori</label>
-                                        <select class="form-control @error('kategori') isinvalid @enderror"
+                                        <select class="form-control @error('kategori') is-invalid @enderror"
                                             name="kategori_id">
                                             <option value="" selected>--Pilih Kategori--
                                             </option>

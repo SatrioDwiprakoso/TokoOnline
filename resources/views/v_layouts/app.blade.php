@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="utf-8">
+     <!-- rajaongkir request AJAX -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
@@ -28,6 +30,7 @@
 
     <!-- Custom stlylesheet -->
     <link type="text/css" rel="stylesheet" href="{{ asset('frontend/eshop/css/style.css') }}">
+    
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -80,25 +83,47 @@
                         </li>
                         <!-- /Cart -->
 
-                        <!-- Account -->
-                        <li class="header-account dropdown default-dropdown">
-                            <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
-                                <div class="header-btns-icon">
-                                    <i class="fa fa-user-o"></i>
+                        @if (Auth::check())
+                            <!-- Account -->
+                            <li class="header-account dropdown default-dropdown">
+                                <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                                    <div class="header-btns-icon">
+                                        <i class="fa fa-user-o"></i>
+                                    </div>
+                                    <strong class="text-uppercase">{{ Auth::user()->name }}<i
+                                            class="fa fa-caret-down"></i></strong>
                                 </div>
-                                <strong class="text-uppercase">Akun Saya<i class="fa fa-caret-down"></i></strong>
-                            </div>
-                            <a href="{{ route('auth.redirect') }}" class="text-uppercase">Login</a>
-                            <ul class="custom-menu">
-                                <li><a href="#"><i class="fa fa-user-o"></i> My Account</a></li>
-                                <li><a href="#"><i class="fa fa-heart-o"></i> My Wishlist</a></li>
-                                <li><a href="#"><i class="fa fa-exchange"></i> Compare</a></li>
-                                <li><a href="#"><i class="fa fa-check"></i> Checkout</a></li>
-                                <li><a href="#"><i class="fa fa-unlock-alt"></i> Login</a></li>
-                                <li><a href="#"><i class="fa fa-user-plus"></i> Create An Account</a></li>
-                            </ul>
-                        </li>
-                        <!-- /Account -->
+                                <ul class="custom-menu">
+                                    <li><a href="{{ route('customer.akun', ['id' => Auth::user()->id]) }}"><i
+                                                class="fa fa-user-o"></i> Akun Saya</a>
+                                    </li>
+                                    <li><a href="#"><i class="fa fa-check"></i> History</a></li>
+                                    <li>
+                                        <a href="#"
+                                            onclick="event.preventDefault(); document.getElementById('keluar-app').submit();"><i
+                                                class="fa fa-power-off"></i> Keluar
+                                        </a>
+                                        <!-- form keluar app -->
+                                        <form id="keluar-app" action="{{ route('logout') }}" method="POST"
+                                            class="d-none">
+                                            @csrf
+                                        </form>
+                                        <!-- form keluar app end -->
+                                    </li>
+                                </ul>
+                            </li>
+                        @else
+                            <li class="header-account dropdown default-dropdown">
+                                <div class="dropdown-toggle" role="button" data-toggle="dropdown" aria-expanded="true">
+                                    <div class="header-btns-icon">
+                                        <i class="fa fa-user-o"></i>
+                                    </div>
+                                    <strong class="text-uppercase">Akun Saya<i class="fa fa-caret-down"></i></strong>
+                                </div>
+                                <a href="{{ route('auth.redirect') }}" class="text-uppercase">Login</a>
+                            </li>
+                            <!-- /Account -->
+                        @endif
 
                         <!-- Mobile nav toggle-->
                         <li class="nav-toggle">
@@ -310,6 +335,7 @@
                                 <li><a href="products.html">Products</a></li>
                                 <li><a href="product-page.html">Product Details</a></li>
                                 <li><a href="checkout.html">Checkout</a></li>
+                                <li><a href="{{ route('order.history') }}"><i class="fa fa-check"></i> History</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -568,6 +594,8 @@
     <script src="{{ asset('frontend/eshop/js/jquery.zoom.min.js') }}"></script>
     <script src="{{ asset('frontend/eshop/js/main.js') }}"></script>
 
+    <!-- rajaongkir Select2 dan AJAX -->
+@stack('scripts')
 </body>
 
 </html>

@@ -11,22 +11,15 @@ class Customer extends Authenticatable
     use HasFactory, Notifiable;
     protected $table = 'customer';
     protected $fillable = [
-        'users_id',
-        'nama',
-        'email',
-        'status',
-        'role',
-        'password',
-        'hp',
-        'alamat',
-        'pos',
-        'foto',
+        'user_id',
         'google_id',
         'google_token',
+        'alamat',
+        'pos',
     ];
     public function user()
     {
-        return $this->belongsTo(User::class, 'users_id', 'id');
+        return $this->belongsTo(User::class, 'user_id', 'id');
     }
     public static function boot()
     {

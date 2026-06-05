@@ -80,8 +80,7 @@ class="light-logo" /> -->
                     <!-- ============================================================== -->
                     <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
                         data-toggle="collapse" data-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle
-navigation"><i
+                        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><i
                             class="ti-more"></i></a>
                 </div>
                 <!-- ============================================================== -->
@@ -93,8 +92,7 @@ navigation"><i
                     <!-- ============================================================== -->
                     <ul class="navbar-nav float-left mr-auto">
                         <li class="nav-item d-none d-md-block"><a
-                                class="nav-link
-sidebartoggler waves-effect waves-light" href="javascript:void(0)"
+                                class="nav-link sidebartoggler waves-effect waves-light" href="javascript:void(0)"
                                 data-sidebartype="minisidebar"><i class="mdi mdi-menu font-24"></i></a></li>
                         <!-- ==============================================================
 -->
@@ -207,6 +205,11 @@ animated">
                                 <li class="sidebar-item"><a href="{{ route('backend.laporan.formproduk') }}"
                                         class="sidebar-link"><i class="mdi mdi-chevron right"></i><span
                                             class="hide-menu"> Produk </span></a></li>
+                                <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                        href="{{ route('backend.customer.index') }}" aria-expanded="false"><i
+                                            class="mdi mdi-account-multiple"></i><span
+                                            class="hide-menu">Customer</span></a>
+                                </li>
                             </ul>
                         </li>
                     </ul>
