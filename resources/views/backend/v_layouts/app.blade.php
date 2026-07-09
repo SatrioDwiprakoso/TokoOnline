@@ -195,6 +195,10 @@ animated">
                                 </li>
                             </ul>
                         </li>
+                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
+                                href="{{ route('pesanan.proses') }}" aria-expanded="false"><i
+                                    class="mdi mdi-cart"></i><span class="hide-menu">Pesanan</span></a>
+                        <li>
                         <li class="sidebar-item"> <a class="sidebar-link has-arrow waves-effect waves-dark"
                                 href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-receipt"></i><span
                                     class="hide-menu">Laporan </span></a>
@@ -356,6 +360,15 @@ animated">
     </script>
     <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
     <!-- <script src="https://cdn.ckeditor.com/ckeditor5/30.0.0/classic/ckeditor.js"></script> -->
+    <script>
+        ClassicEditor
+            .create(document.querySelector('#ckeditor'))
+            .catch(error => {
+                console.error(error);
+            });
+    </script>
+    <script src="{{ asset('ckeditor/ckeditor.js') }}"></script>
+
     <script>
         ClassicEditor
             .create(document.querySelector('#ckeditor'))

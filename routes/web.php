@@ -111,3 +111,24 @@ Route::get('/cek-ongkir', function () {
 }); 
 Route::get('/ongkir/get-destination', [RajaOngkirControllerV2::class, 'getDestination']); 
 Route::post('/ongkir/calculate', [RajaOngkirControllerV2::class, 'calculateOngkir']);
+// Route untuk menampilkan detail pesanan
+Route::get('/backend/pesanan/{id}', [OrderController::class, 'detail'])->name('pesanan.detail');
+
+// Route untuk memproses simpan/update status dan resi pesanan
+Route::put('/backend/pesanan/{id}', [OrderController::class, 'update'])->name('pesanan.update');
+// Pesanan Backend
+Route::get('backend/pesanan/proses', [OrderController::class, 'statusProses'])
+    ->name('pesanan.proses')
+    ->middleware('auth');
+
+Route::get('backend/pesanan/selesai', [OrderController::class, 'statusSelesai'])
+    ->name('pesanan.selesai')
+    ->middleware('auth');
+
+Route::get('backend/pesanan/detail/{id}', [OrderController::class, 'statusDetail'])
+    ->name('pesanan.detail')
+    ->middleware('auth');
+
+Route::put('backend/pesanan/update/{id}', [OrderController::class, 'statusUpdate'])
+    ->name('pesanan.update')
+    ->middleware('auth');
